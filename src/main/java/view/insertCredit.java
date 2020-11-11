@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.text.DecimalFormat;
+
+
 /**
  *
  * @author Nathanael
@@ -28,7 +31,6 @@ public class insertCredit extends javax.swing.JFrame {
     private void initComponents() {
 
         btn20Reais = new javax.swing.JButton();
-        txtCredito = new javax.swing.JTextField();
         btnContinuar = new javax.swing.JButton();
         btn10Reais = new javax.swing.JButton();
         btn5Reais = new javax.swing.JButton();
@@ -37,6 +39,8 @@ public class insertCredit extends javax.swing.JFrame {
         lblOrientacao1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblReal = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        txtCredito = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Insersão de crédito");
@@ -45,11 +49,12 @@ public class insertCredit extends javax.swing.JFrame {
         btn20Reais.setBackground(new java.awt.Color(204, 204, 255));
         btn20Reais.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn20Reais.setText("R$ 20,00");
+        btn20Reais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn20ReaisActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn20Reais, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, -1));
-
-        txtCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtCredito.setText("25,00");
-        getContentPane().add(txtCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 80, -1));
 
         btnContinuar.setBackground(new java.awt.Color(153, 255, 153));
         btnContinuar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -69,16 +74,31 @@ public class insertCredit extends javax.swing.JFrame {
         btn5Reais.setBackground(new java.awt.Color(204, 204, 255));
         btn5Reais.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn5Reais.setText("R$ 5,00");
+        btn5Reais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ReaisActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn5Reais, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, -1));
 
         btn2Reais.setBackground(new java.awt.Color(204, 204, 255));
         btn2Reais.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn2Reais.setText("R$ 2,00");
+        btn2Reais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ReaisActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn2Reais, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 110, -1));
 
         btn1Real.setBackground(new java.awt.Color(204, 204, 255));
         btn1Real.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn1Real.setText("R$ 1,00");
+        btn1Real.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1RealActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn1Real, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 116, -1));
 
         lblOrientacao1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -88,21 +108,41 @@ public class insertCredit extends javax.swing.JFrame {
         lblReal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblReal.setText("R$");
 
+        jButton1.setBackground(new java.awt.Color(255, 153, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txtCredito.setEditable(false);
+        txtCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtCredito.setText("0,00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(312, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(279, Short.MAX_VALUE)
                 .addComponent(lblReal)
-                .addGap(116, 116, 116))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(lblReal)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(97, 97, 97)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReal))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 300));
@@ -112,9 +152,34 @@ public class insertCredit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn10ReaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn10ReaisActionPerformed
-        // TODO add your handling code here:
+        adicionarCredito(10.00);
     }//GEN-LAST:event_btn10ReaisActionPerformed
 
+    private void btn20ReaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn20ReaisActionPerformed
+        adicionarCredito(20.00);
+    }//GEN-LAST:event_btn20ReaisActionPerformed
+
+    private void btn5ReaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ReaisActionPerformed
+        adicionarCredito(5.00);
+    }//GEN-LAST:event_btn5ReaisActionPerformed
+
+    private void btn2ReaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ReaisActionPerformed
+        adicionarCredito(2.00);
+    }//GEN-LAST:event_btn2ReaisActionPerformed
+
+    private void btn1RealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1RealActionPerformed
+        adicionarCredito(1.00);
+    }//GEN-LAST:event_btn1RealActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        txtCredito.setText("0,00");
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void adicionarCredito(double valor){
+        DecimalFormat creditoFormat = new DecimalFormat("00.00");
+        double credito = Double.parseDouble(txtCredito.getText().replace(",", ".")) + valor;
+        txtCredito.setText(creditoFormat.format(credito));
+    }
     /**
      * @param args the command line arguments
      */
@@ -158,6 +223,7 @@ public class insertCredit extends javax.swing.JFrame {
     private javax.swing.JButton btn2Reais;
     private javax.swing.JButton btn5Reais;
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblOrientacao1;
     private javax.swing.JLabel lblReal;
