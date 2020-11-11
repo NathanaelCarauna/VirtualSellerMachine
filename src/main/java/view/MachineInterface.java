@@ -331,9 +331,10 @@ public class MachineInterface extends javax.swing.JFrame {
         int[] listaDeMoedasDisponiveis = {1,2,5,10,20};
         int[] moedasUsadas = new int[valor+1];
         int[] contadorDeMoeda = new int[valor+1];
-        telaDeTroco.escreverNaTela("Seu troco é: R$ " + troco);
-        txtTrocoRecebido.setText(""+Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" notas, sendo elas: ");
-        txtTrocoRecebido.setText(txtTrocoRecebido.getText() + Troco.imprimirMoedas(moedasUsadas, valor));
+        telaDeTroco.escreverNaTela(creditoFormat.format(troco) +"\n\r");
+        telaDeTroco.escreverNaTela(""+Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r");
+        telaDeTroco.escreverNaTela("Sendo ela(s): ");
+        telaDeTroco.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r");
         
         txtSaldo.setText(creditoFormat.format(0));
         txtTroco.setText(creditoFormat.format(0));
