@@ -59,6 +59,11 @@ public class insertCredit extends javax.swing.JFrame {
         btnContinuar.setBackground(new java.awt.Color(153, 255, 153));
         btnContinuar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 350, 40));
 
         btn10Reais.setBackground(new java.awt.Color(204, 204, 255));
@@ -174,7 +179,18 @@ public class insertCredit extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtCredito.setText("0,00");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        MachineInterface maquinaDeVendas = new MachineInterface();
+        maquinaDeVendas.setSaldo(getCredito());
+        maquinaDeVendas.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnContinuarActionPerformed
     
+    private double getCredito(){
+        double credito = Double.parseDouble(txtCredito.getText().replace(",", "."));
+        return credito;
+    }
     private void adicionarCredito(double valor){
         DecimalFormat creditoFormat = new DecimalFormat("00.00");
         double credito = Double.parseDouble(txtCredito.getText().replace(",", ".")) + valor;
