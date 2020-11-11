@@ -6,6 +6,7 @@
 package view;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -38,8 +39,7 @@ public class insertCredit extends javax.swing.JFrame {
         btn1Real = new javax.swing.JButton();
         lblOrientacao1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblReal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnZerar = new javax.swing.JButton();
         txtCredito = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,44 +110,38 @@ public class insertCredit extends javax.swing.JFrame {
         lblOrientacao1.setText("Caro cliente, por favor, deposite o crédito desejado:");
         getContentPane().add(lblOrientacao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        lblReal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblReal.setText("R$");
-
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnZerar.setBackground(new java.awt.Color(255, 153, 153));
+        btnZerar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnZerar.setText("X");
+        btnZerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnZerarActionPerformed(evt);
             }
         });
 
         txtCredito.setEditable(false);
         txtCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtCredito.setText("0,00");
+        txtCredito.setText("R$ 0,00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(279, Short.MAX_VALUE)
-                .addComponent(lblReal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(288, Short.MAX_VALUE)
+                .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnZerar)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblReal))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(91, 91, 91)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCredito)
+                    .addComponent(btnZerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 300));
@@ -155,7 +149,10 @@ public class insertCredit extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    MachineInterface maquinaDeVendas = new MachineInterface();
+    DecimalFormat creditoFormat = new DecimalFormat("R$ 0.00");
+    
     private void btn10ReaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn10ReaisActionPerformed
         adicionarCredito(10.00);
     }//GEN-LAST:event_btn10ReaisActionPerformed
@@ -176,24 +173,27 @@ public class insertCredit extends javax.swing.JFrame {
         adicionarCredito(1.00);
     }//GEN-LAST:event_btn1RealActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtCredito.setText("0,00");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnZerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZerarActionPerformed
+        txtCredito.setText(creditoFormat.format(0));
+    }//GEN-LAST:event_btnZerarActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        MachineInterface maquinaDeVendas = new MachineInterface();
-        maquinaDeVendas.setSaldo(getCredito());
-        maquinaDeVendas.setVisible(true);
-        this.setVisible(false);
+        if((getCredito()>0)){
+            maquinaDeVendas = new MachineInterface();
+            maquinaDeVendas.setSaldo(getCredito());
+            maquinaDeVendas.setVisible(true);
+            this.setVisible(false);            
+        }else{
+            JOptionPane.showMessageDialog(null, "Para continuar, é necessário inserir algum crédito.");
+        }
     }//GEN-LAST:event_btnContinuarActionPerformed
     
     private double getCredito(){
-        double credito = Double.parseDouble(txtCredito.getText().replace(",", "."));
+        double credito = Double.parseDouble(txtCredito.getText().replace(",", ".").replace("R$ ", ""));
         return credito;
     }
     private void adicionarCredito(double valor){
-        DecimalFormat creditoFormat = new DecimalFormat("00.00");
-        double credito = Double.parseDouble(txtCredito.getText().replace(",", ".")) + valor;
+        double credito = Double.parseDouble(txtCredito.getText().replace(",", ".").replace("R$ ", "")) + valor;
         txtCredito.setText(creditoFormat.format(credito));
     }
     /**
@@ -239,10 +239,9 @@ public class insertCredit extends javax.swing.JFrame {
     private javax.swing.JButton btn2Reais;
     private javax.swing.JButton btn5Reais;
     private javax.swing.JButton btnContinuar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnZerar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblOrientacao1;
-    private javax.swing.JLabel lblReal;
     private javax.swing.JTextField txtCredito;
     // End of variables declaration//GEN-END:variables
 }
