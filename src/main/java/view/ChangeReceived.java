@@ -59,6 +59,11 @@ public class ChangeReceived extends javax.swing.JFrame {
         btnNovaCompra1.setBackground(new java.awt.Color(255, 204, 204));
         btnNovaCompra1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNovaCompra1.setText("Encerrar");
+        btnNovaCompra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaCompra1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +103,10 @@ public class ChangeReceived extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovaCompra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompra1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnNovaCompra1ActionPerformed
 
     /**
      * @param args the command line arguments
