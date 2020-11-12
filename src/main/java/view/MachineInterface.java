@@ -117,6 +117,11 @@ public class MachineInterface extends javax.swing.JFrame {
         jButton2.setText("Pipos");
 
         jButton3.setText("Coca-Cola");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Barra de cereal");
 
@@ -226,6 +231,7 @@ public class MachineInterface extends javax.swing.JFrame {
         btnFinalizar.setBackground(new java.awt.Color(153, 255, 153));
         btnFinalizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnFinalizar.setText("Finalizar compra");
+        btnFinalizar.setEnabled(false);
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
@@ -325,17 +331,19 @@ public class MachineInterface extends javax.swing.JFrame {
 
     DecimalFormat creditoFormat = new DecimalFormat("R$ 0.00");
     FinalizationScreen telaDefinalizacao = new FinalizationScreen();
+    ArrayList<String> carrinhoDeCompras = new ArrayList<>();
     
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         double saldo = Double.parseDouble(txtSaldo.getText().replace("R$ ", "").replace(",", "."));
         double totalAPagar = Double.parseDouble(txtTotal.getText().replace("R$ ", "").replace(",", "."));
-        if(saldo>totalAPagar){
+        if(saldo>=totalAPagar){
             double troco = saldo - totalAPagar;
-            escreverNaTela("\n\r\tPagamento realizado com sucesso!\n\r\t" + txtTotal.getText()+" foram debitados do seu saldo");
+            escreverNaTela("\n\r\t" + txtTotal.getText()+ " foram debitados do seu saldo" + "\n\r\tPagamento realizado com sucesso!");
             txtTroco.setText(creditoFormat.format(troco));
             txtSaldo.setText(creditoFormat.format(troco));
             txtTotal.setText(creditoFormat.format(0));
             btnPagar.setEnabled(false);
+            btnFinalizar.setEnabled(true);
         }else{
             JOptionPane.showMessageDialog(null, "Saldo insuficente para completar a compra");
         }
@@ -352,29 +360,49 @@ public class MachineInterface extends javax.swing.JFrame {
             int[] moedasUsadas = new int[valor+1];
             int[] contadorDeMoeda = new int[valor+1];
             telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) +"\n\r", 2);
-            telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r", 2);
-            telaDefinalizacao.escreverNaTela("Sendo ela(s): ", 2);
+            telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s) --> ", 2);
             telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r",2);
+            
         }else{
             telaDefinalizacao.escreverNaTela("Nenhum troco a ser devolvido", 2);
+        }
+        for(int i = 0; i< carrinhoDeCompras.size();i++){
+            telaDefinalizacao.escreverNaTela("* "+carrinhoDeCompras.get(i)+"\n\r", 1);
         }
         this.dispose();
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnRecomecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomecarActionPerformed
         //limpar lista de produtos
+        carrinhoDeCompras.clear();
         //Voltar design dos botões selecionados para o padrão
         txtTotal.setText(creditoFormat.format(0));
+        txtAreaDigitalScreen.setText("\tBem vindo à nossa super máquina de Guloseimas e bebidas! "
+                + "Aqui você encontra os melhores produtos em um só lugar.\n\r"
+                + "\tPor favor, aperte nos botões dos produtos que você deseja: ");
         
     }//GEN-LAST:event_btnRecomecarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //procurar produto na lista.
+        carrinhoDeCompras.add(jButton3.getText());
+        escreverNaTela("\n\r\t * Produto1 _________ R$ 3,50");
+        calcularValorAPagar(3.5);
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private void escreverNaTela(String mensagem){
         txtAreaDigitalScreen.setText(txtAreaDigitalScreen.getText() + mensagem);
     }
-            
+    
+    private void calcularValorAPagar(double valor){
+        double total = Double.parseDouble(txtTotal.getText().replace("R$ ", "").replace(",", ".")) + valor;
+        txtTotal.setText(creditoFormat.format(total));
+    }
+    
     public void setSaldo(double credito){
         txtSaldo.setText(creditoFormat.format(credito));
     }
+    
     
     /**
      * @param args the command line arguments
