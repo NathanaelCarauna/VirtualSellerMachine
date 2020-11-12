@@ -182,7 +182,8 @@ public class insertCredit extends javax.swing.JFrame {
             maquinaDeVendas = new MachineInterface();
             maquinaDeVendas.setSaldo(getCredito());
             maquinaDeVendas.setVisible(true);
-            this.setVisible(false);            
+            this.setVisible(false);   
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Para continuar, é necessário inserir algum crédito.");
         }

@@ -6,6 +6,7 @@
 package view;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import metodos.Troco;
 
 /**
@@ -60,7 +61,6 @@ public class MachineInterface extends javax.swing.JFrame {
         btnRetirarTroco = new javax.swing.JButton();
         btnRecomecar = new javax.swing.JButton();
         btnConfirmarCompra1 = new javax.swing.JButton();
-        txtTrocoRecebido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Máquina De Vendas Virtual");
@@ -204,7 +204,7 @@ public class MachineInterface extends javax.swing.JFrame {
 
         btnRetirarTroco.setBackground(new java.awt.Color(153, 255, 153));
         btnRetirarTroco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRetirarTroco.setText("Retirar");
+        btnRetirarTroco.setText("Finalizar");
         btnRetirarTroco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetirarTrocoActionPerformed(evt);
@@ -218,8 +218,6 @@ public class MachineInterface extends javax.swing.JFrame {
         btnConfirmarCompra1.setBackground(new java.awt.Color(153, 255, 153));
         btnConfirmarCompra1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnConfirmarCompra1.setText("Confirmar Compra");
-
-        txtTrocoRecebido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,17 +246,12 @@ public class MachineInterface extends javax.swing.JFrame {
                                             .addComponent(txtTroco, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
                                             .addComponent(txtTotal))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnPagar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnRetirarTroco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(69, 69, 69))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnRecomecar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnConfirmarCompra1))
-                                            .addComponent(txtTrocoRecebido, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnRecomecar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnConfirmarCompra1)
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -266,6 +259,10 @@ public class MachineInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addComponent(btnRetirarTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,20 +281,23 @@ public class MachineInterface extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRecomecar)
                             .addComponent(btnConfirmarCompra1))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnPagar)
-                            .addComponent(lblTotal)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRetirarTroco)
-                            .addComponent(lblTroco)
-                            .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTotal)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTroco)
+                                    .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(pTelaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(txtTrocoRecebido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addComponent(btnRetirarTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -319,10 +319,13 @@ public class MachineInterface extends javax.swing.JFrame {
             int[] moedasUsadas = new int[valor+1];
             int[] contadorDeMoeda = new int[valor+1];
             Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, (int)troco, contadorDeMoeda, moedasUsadas);
+        }else{
+            JOptionPane.showMessageDialog(null, "Saldo insuficente para completar a compra");
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnRetirarTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarTrocoActionPerformed
+        
         telaDeTroco = new ChangeReceived();
         telaDeTroco.setVisible(true);
         
@@ -412,6 +415,5 @@ public class MachineInterface extends javax.swing.JFrame {
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtTroco;
-    private javax.swing.JTextField txtTrocoRecebido;
     // End of variables declaration//GEN-END:variables
 }

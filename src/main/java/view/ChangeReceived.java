@@ -32,11 +32,14 @@ public class ChangeReceived extends javax.swing.JFrame {
     private void initComponents() {
 
         lblAgradecimento = new javax.swing.JLabel();
-        lblAgradecimento1 = new javax.swing.JLabel();
+        lblTroco = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTroco = new javax.swing.JTextArea();
         btnNovaCompra = new javax.swing.JButton();
-        btnNovaCompra1 = new javax.swing.JButton();
+        btnEncerrar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaProdutos = new javax.swing.JTextArea();
+        lblProdutos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seu troco");
@@ -44,8 +47,8 @@ public class ChangeReceived extends javax.swing.JFrame {
         lblAgradecimento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblAgradecimento.setText("Muito Obrigado por comprar conosco!");
 
-        lblAgradecimento1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblAgradecimento1.setText("Segue o seu troco:");
+        lblTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblTroco.setText("Troco");
 
         txtAreaTroco.setColumns(20);
         txtAreaTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -56,47 +59,67 @@ public class ChangeReceived extends javax.swing.JFrame {
         btnNovaCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNovaCompra.setText("Nova compra");
 
-        btnNovaCompra1.setBackground(new java.awt.Color(255, 204, 204));
-        btnNovaCompra1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnNovaCompra1.setText("Encerrar");
-        btnNovaCompra1.addActionListener(new java.awt.event.ActionListener() {
+        btnEncerrar.setBackground(new java.awt.Color(255, 204, 204));
+        btnEncerrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEncerrar.setText("Encerrar");
+        btnEncerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaCompra1ActionPerformed(evt);
+                btnEncerrarActionPerformed(evt);
             }
         });
+
+        txtAreaProdutos.setColumns(20);
+        txtAreaProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAreaProdutos.setRows(5);
+        jScrollPane2.setViewportView(txtAreaProdutos);
+
+        lblProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblProdutos.setText("Produtos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovaCompra1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNovaCompra))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblAgradecimento)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblAgradecimento1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(lblAgradecimento, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblProdutos)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEncerrar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNovaCompra))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTroco)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(lblAgradecimento)
-                .addGap(49, 49, 49)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAgradecimento1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTroco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblProdutos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovaCompra)
-                    .addComponent(btnNovaCompra1))
+                    .addComponent(btnEncerrar))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -104,9 +127,9 @@ public class ChangeReceived extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovaCompra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompra1ActionPerformed
+    private void btnEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btnNovaCompra1ActionPerformed
+    }//GEN-LAST:event_btnEncerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +168,14 @@ public class ChangeReceived extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEncerrar;
     private javax.swing.JButton btnNovaCompra;
-    private javax.swing.JButton btnNovaCompra1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAgradecimento;
-    private javax.swing.JLabel lblAgradecimento1;
+    private javax.swing.JLabel lblProdutos;
+    private javax.swing.JLabel lblTroco;
+    private javax.swing.JTextArea txtAreaProdutos;
     private javax.swing.JTextArea txtAreaTroco;
     // End of variables declaration//GEN-END:variables
 }
