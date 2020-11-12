@@ -88,7 +88,7 @@ public class MachineInterface extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
         );
 
-        pTelaDeProdutos.setBackground(new java.awt.Color(0, 0, 0));
+        pTelaDeProdutos.setBackground(new java.awt.Color(204, 204, 204));
         pTelaDeProdutos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.darkGray, java.awt.Color.black));
 
         jButton1.setText("Marshmellow");
@@ -305,7 +305,7 @@ public class MachineInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     DecimalFormat creditoFormat = new DecimalFormat("R$ 0.00");
-    ChangeReceived telaDeTroco = new ChangeReceived();
+    FinalizationScreen telaDefinalizacao = new FinalizationScreen();
     
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         double saldo = Double.parseDouble(txtSaldo.getText().replace("R$ ", "").replace(",", "."));
@@ -324,18 +324,18 @@ public class MachineInterface extends javax.swing.JFrame {
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         
-        telaDeTroco = new ChangeReceived();
-        telaDeTroco.setVisible(true);
+        telaDefinalizacao = new FinalizationScreen();
+        telaDefinalizacao.setVisible(true);
         
         double troco = Double.parseDouble(txtTroco.getText().replace("R$ ", "").replace(",", "."));
         int valor = (int)troco;
         int[] listaDeMoedasDisponiveis = {1,2,5,10,20};
         int[] moedasUsadas = new int[valor+1];
         int[] contadorDeMoeda = new int[valor+1];
-        telaDeTroco.escreverNaTela(creditoFormat.format(troco) +"\n\r");
-        telaDeTroco.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r");
-        telaDeTroco.escreverNaTela("Sendo ela(s): ");
-        telaDeTroco.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r");
+        telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) +"\n\r", 2);
+        telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r", 2);
+        telaDefinalizacao.escreverNaTela("Sendo ela(s): ", 2);
+        telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r",2);
         this.dispose();
     }//GEN-LAST:event_btnFinalizarActionPerformed
     

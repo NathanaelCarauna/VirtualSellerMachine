@@ -9,17 +9,13 @@ package view;
  *
  * @author Nathanael
  */
-public class ChangeReceived extends javax.swing.JFrame {
+public class FinalizationScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form TrocoRecebido
      */
-    public ChangeReceived() {
+    public FinalizationScreen() {
         initComponents();
-    }
-    
-    public void escreverNaTela(String mensagem){
-        txtAreaTroco.setText(txtAreaTroco.getText()+mensagem);
     }
     
     /**
@@ -135,6 +131,16 @@ public class ChangeReceived extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     insertCredit telaDeCredito;
+    
+    public void escreverNaTela(String mensagem, int numeroTela){
+        if(numeroTela == 1){
+            txtAreaProdutos.setText(txtAreaProdutos.getText() + mensagem);
+        }
+        if(numeroTela == 2){
+            txtAreaTroco.setText(txtAreaTroco.getText()+mensagem);
+        }
+    }
+    
     private void btnEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnEncerrarActionPerformed
@@ -162,21 +168,35 @@ public class ChangeReceived extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangeReceived.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinalizationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangeReceived.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinalizationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangeReceived.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinalizationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangeReceived.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinalizationScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChangeReceived().setVisible(true);
+                new FinalizationScreen().setVisible(true);
             }
         });
     }
