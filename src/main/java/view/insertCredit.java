@@ -39,8 +39,8 @@ public class insertCredit extends javax.swing.JFrame {
         btn1Real = new javax.swing.JButton();
         lblOrientacao1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnZerar = new javax.swing.JButton();
         txtCredito = new javax.swing.JTextField();
+        btnZerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Insersão de crédito");
@@ -110,18 +110,18 @@ public class insertCredit extends javax.swing.JFrame {
         lblOrientacao1.setText("Caro cliente, por favor, deposite o crédito desejado:");
         getContentPane().add(lblOrientacao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        btnZerar.setBackground(new java.awt.Color(255, 153, 153));
-        btnZerar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnZerar.setText("X");
+        txtCredito.setEditable(false);
+        txtCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtCredito.setText("R$ 0,00");
+
+        btnZerar.setBackground(new java.awt.Color(102, 102, 102));
+        btnZerar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnZerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_undo.png"))); // NOI18N
         btnZerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZerarActionPerformed(evt);
             }
         });
-
-        txtCredito.setEditable(false);
-        txtCredito.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtCredito.setText("R$ 0,00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,7 +131,7 @@ public class insertCredit extends javax.swing.JFrame {
                 .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(txtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnZerar)
+                .addComponent(btnZerar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,10 +173,6 @@ public class insertCredit extends javax.swing.JFrame {
         adicionarCredito(1.00);
     }//GEN-LAST:event_btn1RealActionPerformed
 
-    private void btnZerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZerarActionPerformed
-        txtCredito.setText(creditoFormat.format(0));
-    }//GEN-LAST:event_btnZerarActionPerformed
-
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         if((getCredito()>0)){
             maquinaDeVendas = new MachineInterface();
@@ -188,6 +184,10 @@ public class insertCredit extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Para continuar, é necessário inserir algum crédito.");
         }
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void btnZerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZerarActionPerformed
+        txtCredito.setText(creditoFormat.format(0));
+    }//GEN-LAST:event_btnZerarActionPerformed
     
     private double getCredito(){
         double credito = Double.parseDouble(txtCredito.getText().replace(",", ".").replace("R$ ", ""));
