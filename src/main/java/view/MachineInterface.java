@@ -6,6 +6,8 @@
 package view;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import metodos.Troco;
 
@@ -20,6 +22,26 @@ public class MachineInterface extends javax.swing.JFrame {
      */
     public MachineInterface() {
         initComponents();
+        ArrayList<JButton> botoes = new ArrayList<>();
+        botoes.add(jButton1);
+        botoes.add(jButton2);
+        botoes.add(jButton3);
+        botoes.add(jButton4);
+        botoes.add(jButton5);
+        botoes.add(jButton6);
+        botoes.add(jButton7);
+        botoes.add(jButton8);
+        botoes.add(jButton9);
+        botoes.add(jButton10);
+        botoes.add(jButton11);
+        botoes.add(jButton12);
+        
+        String[] testeDeNomes = {"Produto1", "Produto2","Produto3","Produto4","Produto5","Produto6","Produto7","Produto8","Produto9","Produto10","Produto11","Produto12"};
+        
+        for(int i = 0; i<botoes.size(); i++){
+            botoes.get(i).setText(testeDeNomes[i]);
+        }
+        
         escreverNaTela("\tBem vindo à nossa super máquina de Guloseimas e bebidas! "
                 + "Aqui você encontra os melhores produtos em um só lugar.\n\r"
                 + "\tPor favor, aperte nos botões dos produtos que você deseja: ");
@@ -417,4 +439,5 @@ public class MachineInterface extends javax.swing.JFrame {
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtTroco;
     // End of variables declaration//GEN-END:variables
+    
 }
