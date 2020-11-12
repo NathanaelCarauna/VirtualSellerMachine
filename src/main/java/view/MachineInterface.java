@@ -60,7 +60,6 @@ public class MachineInterface extends javax.swing.JFrame {
         txtTroco = new javax.swing.JTextField();
         btnFinalizar = new javax.swing.JButton();
         btnRecomecar = new javax.swing.JButton();
-        btnConfirmarCompra1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Máquina De Vendas Virtual");
@@ -166,7 +165,7 @@ public class MachineInterface extends javax.swing.JFrame {
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         lblSaldo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -211,13 +210,14 @@ public class MachineInterface extends javax.swing.JFrame {
             }
         });
 
-        btnRecomecar.setBackground(new java.awt.Color(153, 255, 153));
+        btnRecomecar.setBackground(new java.awt.Color(102, 102, 102));
         btnRecomecar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRecomecar.setText("Recomeçar");
-
-        btnConfirmarCompra1.setBackground(new java.awt.Color(153, 255, 153));
-        btnConfirmarCompra1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnConfirmarCompra1.setText("Confirmar Compra");
+        btnRecomecar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrow_undo.png"))); // NOI18N
+        btnRecomecar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecomecarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,26 +233,25 @@ public class MachineInterface extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pTelaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblTotal)
-                                            .addComponent(lblTroco))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtTroco, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                            .addComponent(txtTotal))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(69, 69, 69))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRecomecar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnConfirmarCompra1)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                    .addComponent(lblTotal)
+                                    .addComponent(lblTroco))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTroco, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                    .addComponent(txtTotal))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRecomecar)
+                                .addGap(151, 151, 151))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblSaldo)
@@ -269,7 +268,7 @@ public class MachineInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSaldo)
                     .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,12 +276,10 @@ public class MachineInterface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRecomecar)
-                            .addComponent(btnConfirmarCompra1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRecomecar)
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTotal)
@@ -292,7 +289,7 @@ public class MachineInterface extends javax.swing.JFrame {
                                     .addComponent(lblTroco)
                                     .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(pTelaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -326,18 +323,28 @@ public class MachineInterface extends javax.swing.JFrame {
         
         telaDefinalizacao = new FinalizationScreen();
         telaDefinalizacao.setVisible(true);
-        
         double troco = Double.parseDouble(txtTroco.getText().replace("R$ ", "").replace(",", "."));
-        int valor = (int)troco;
-        int[] listaDeMoedasDisponiveis = {1,2,5,10,20};
-        int[] moedasUsadas = new int[valor+1];
-        int[] contadorDeMoeda = new int[valor+1];
-        telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) +"\n\r", 2);
-        telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r", 2);
-        telaDefinalizacao.escreverNaTela("Sendo ela(s): ", 2);
-        telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r",2);
+        if(troco != 0){
+            int valor = (int)troco;
+            int[] listaDeMoedasDisponiveis = {1,2,5,10,20};
+            int[] moedasUsadas = new int[valor+1];
+            int[] contadorDeMoeda = new int[valor+1];
+            telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) +"\n\r", 2);
+            telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r", 2);
+            telaDefinalizacao.escreverNaTela("Sendo ela(s): ", 2);
+            telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r",2);
+        }else{
+            telaDefinalizacao.escreverNaTela("Nenhum troco a ser devolvido", 2);
+        }
         this.dispose();
     }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void btnRecomecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomecarActionPerformed
+        //limpar lista de produtos
+        //Voltar design dos botões selecionados para o padrão
+        txtTotal.setText(creditoFormat.format(0));
+        
+    }//GEN-LAST:event_btnRecomecarActionPerformed
     
     private void escreverNaTela(String mensagem){
         txtAreaDigitalScreen.setText(txtAreaDigitalScreen.getText() + mensagem);
@@ -383,7 +390,6 @@ public class MachineInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConfirmarCompra1;
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnRecomecar;
