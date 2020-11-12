@@ -109,6 +109,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="txtAreaTroco">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>
@@ -128,6 +129,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nova compra"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovaCompraActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEncerrar">
       <Properties>
@@ -152,6 +156,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="txtAreaProdutos">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="0"/>

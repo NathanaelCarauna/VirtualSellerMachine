@@ -50,6 +50,7 @@ public class ChangeReceived extends javax.swing.JFrame {
         lblTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTroco.setText("Troco");
 
+        txtAreaTroco.setEditable(false);
         txtAreaTroco.setColumns(20);
         txtAreaTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAreaTroco.setRows(5);
@@ -58,6 +59,11 @@ public class ChangeReceived extends javax.swing.JFrame {
         btnNovaCompra.setBackground(new java.awt.Color(153, 255, 153));
         btnNovaCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNovaCompra.setText("Nova compra");
+        btnNovaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaCompraActionPerformed(evt);
+            }
+        });
 
         btnEncerrar.setBackground(new java.awt.Color(255, 204, 204));
         btnEncerrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -68,6 +74,7 @@ public class ChangeReceived extends javax.swing.JFrame {
             }
         });
 
+        txtAreaProdutos.setEditable(false);
         txtAreaProdutos.setColumns(20);
         txtAreaProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAreaProdutos.setRows(5);
@@ -127,9 +134,16 @@ public class ChangeReceived extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    insertCredit telaDeCredito;
     private void btnEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnEncerrarActionPerformed
+
+    private void btnNovaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompraActionPerformed
+        telaDeCredito = new insertCredit();
+        telaDeCredito.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNovaCompraActionPerformed
 
     /**
      * @param args the command line arguments

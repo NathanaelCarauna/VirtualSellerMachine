@@ -58,7 +58,7 @@ public class MachineInterface extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
         lblTroco = new javax.swing.JLabel();
         txtTroco = new javax.swing.JTextField();
-        btnRetirarTroco = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
         btnRecomecar = new javax.swing.JButton();
         btnConfirmarCompra1 = new javax.swing.JButton();
 
@@ -73,7 +73,7 @@ public class MachineInterface extends javax.swing.JFrame {
         txtAreaDigitalScreen.setForeground(new java.awt.Color(255, 255, 255));
         txtAreaDigitalScreen.setLineWrap(true);
         txtAreaDigitalScreen.setRows(5);
-        txtAreaDigitalScreen.setTabSize(4);
+        txtAreaDigitalScreen.setTabSize(2);
         txtAreaDigitalScreen.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtAreaDigitalScreen);
 
@@ -88,7 +88,7 @@ public class MachineInterface extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
         );
 
-        pTelaDeProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        pTelaDeProdutos.setBackground(new java.awt.Color(0, 0, 0));
         pTelaDeProdutos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.gray, java.awt.Color.darkGray, java.awt.Color.black));
 
         jButton1.setText("Marshmellow");
@@ -202,12 +202,12 @@ public class MachineInterface extends javax.swing.JFrame {
         txtTroco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTroco.setText("R$ 0,00");
 
-        btnRetirarTroco.setBackground(new java.awt.Color(153, 255, 153));
-        btnRetirarTroco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRetirarTroco.setText("Finalizar");
-        btnRetirarTroco.addActionListener(new java.awt.event.ActionListener() {
+        btnFinalizar.setBackground(new java.awt.Color(153, 255, 153));
+        btnFinalizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnFinalizar.setText("Finalizar compra");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRetirarTrocoActionPerformed(evt);
+                btnFinalizarActionPerformed(evt);
             }
         });
 
@@ -261,7 +261,7 @@ public class MachineInterface extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(284, 284, 284)
-                .addComponent(btnRetirarTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -296,7 +296,7 @@ public class MachineInterface extends javax.swing.JFrame {
                                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(pTelaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnRetirarTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -312,19 +312,17 @@ public class MachineInterface extends javax.swing.JFrame {
         double totalAPagar = Double.parseDouble(txtTotal.getText().replace("R$ ", "").replace(",", "."));
         if(saldo>totalAPagar){
             double troco = saldo - totalAPagar;
+            escreverNaTela("\n\r\tPagamento realizado com sucesso!\n\r\t" + txtTotal.getText()+" foram debitados do seu saldo");
             txtTroco.setText(creditoFormat.format(troco));
             txtSaldo.setText(creditoFormat.format(troco));
-            int valor = (int)troco;
-            int[] listaDeMoedasDisponiveis = {1,5,10,21,25};
-            int[] moedasUsadas = new int[valor+1];
-            int[] contadorDeMoeda = new int[valor+1];
-            Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, (int)troco, contadorDeMoeda, moedasUsadas);
+            txtTotal.setText(creditoFormat.format(0));
+            btnPagar.setEnabled(false);
         }else{
             JOptionPane.showMessageDialog(null, "Saldo insuficente para completar a compra");
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
-    private void btnRetirarTrocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarTrocoActionPerformed
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
         
         telaDeTroco = new ChangeReceived();
         telaDeTroco.setVisible(true);
@@ -335,17 +333,14 @@ public class MachineInterface extends javax.swing.JFrame {
         int[] moedasUsadas = new int[valor+1];
         int[] contadorDeMoeda = new int[valor+1];
         telaDeTroco.escreverNaTela(creditoFormat.format(troco) +"\n\r");
-        telaDeTroco.escreverNaTela(""+Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r");
+        telaDeTroco.escreverNaTela(Troco.calcularTrocoMoedas(listaDeMoedasDisponiveis, valor, contadorDeMoeda, moedasUsadas)+" nota(s)\n\r");
         telaDeTroco.escreverNaTela("Sendo ela(s): ");
         telaDeTroco.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valor)+"\n\r");
-        
-        txtSaldo.setText(creditoFormat.format(0));
-        txtTroco.setText(creditoFormat.format(0));
-        txtTotal.setText(creditoFormat.format(0));
-    }//GEN-LAST:event_btnRetirarTrocoActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFinalizarActionPerformed
     
     private void escreverNaTela(String mensagem){
-        txtAreaDigitalScreen.setText(mensagem);
+        txtAreaDigitalScreen.setText(txtAreaDigitalScreen.getText() + mensagem);
     }
             
     public void setSaldo(double credito){
@@ -389,9 +384,9 @@ public class MachineInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmarCompra1;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnRecomecar;
-    private javax.swing.JButton btnRetirarTroco;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
