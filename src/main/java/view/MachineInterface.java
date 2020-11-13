@@ -560,17 +560,15 @@ public class MachineInterface extends javax.swing.JFrame {
         double totalAPagar = Double.parseDouble(txtTotal.getText().replace("R$ ", "").replace(",", "."));
         if (saldo >= totalAPagar) {
             double troco = saldo - totalAPagar;
-            escreverNaTela("\n\n\r" + txtTotal.getText() + " foram debitados do seu saldo" + "\n\rPagamento realizado com sucesso!");
+            escreverNaTela("\n\rPagamento realizado com sucesso! "+txtTotal.getText() + " foram debitados do seu saldo" );
             escreverNaTela("\n\rObrigada por comprar! ^^");
+            escreverNaTela("\n\rFique à vontade para comprar mais bebidas!:)\n\r");
             txtTroco.setText(creditoFormat.format(troco));
             txtSaldo.setText(creditoFormat.format(troco));
             txtTotal.setText(creditoFormat.format(0));
             btnPagar.setEnabled(false);
             btnFinalizar.setEnabled(true);
-            for (int i = 0; i < botoes.size(); i++) {
-                botoes.get(i).setText("Teste");
-                botoes.get(i).setEnabled(false);
-            }
+            
         } else {
             JOptionPane.showMessageDialog(null, "Saldo insuficente para completar a compra");
         }
@@ -623,92 +621,62 @@ public class MachineInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecomecarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //procurar produto na lista.
-        Produto produto = listaDeProdutos.pegar(jButton3.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton3.getText()));   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton5.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton5.getText()));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton8.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton8.getText()));
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton11.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton11.getText()));
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton1.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton1.getText()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton4.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton4.getText()));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton7.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton7.getText()));
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton10.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton10.getText()));
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton2.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton2.getText()));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton6.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton6.getText()));
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton9.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton9.getText()));
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Produto produto = listaDeProdutos.pegar(jButton12.getText());
-        carrinhoDeCompras.adicionar(produto);
-        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
-        calcularValorAPagar(produto.getPreço());
+        adicionarProdutoNoCarrinho(listaDeProdutos.pegar(jButton12.getText()));
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void escreverNaTela(String mensagem) {
         txtAreaDigitalScreen.setText(txtAreaDigitalScreen.getText() + mensagem);
+    }
+    
+    private void adicionarProdutoNoCarrinho(Produto produto){
+        carrinhoDeCompras.adicionar(produto);
+        escreverNaTela("\n\r\t* " + produto.getNome() + "\t --> " + produto.getDescrição() + "\r\n\tPreço: ______________________" + creditoFormat.format(produto.getPreço()) + "\n\r");
+        calcularValorAPagar(produto.getPreço());
+        btnPagar.setEnabled(true);
     }
 
     private void calcularValorAPagar(double valor) {
