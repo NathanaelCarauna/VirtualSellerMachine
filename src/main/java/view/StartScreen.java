@@ -56,6 +56,7 @@ public class StartScreen extends javax.swing.JFrame {
         btnZerar.setBackground(new java.awt.Color(0, 0, 0));
         btnZerar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnZerar.setForeground(new java.awt.Color(255, 255, 255));
+        btnZerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow_undo.png"))); // NOI18N
         btnZerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZerarActionPerformed(evt);
