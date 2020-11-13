@@ -79,7 +79,7 @@ public class MachineInterface extends javax.swing.JFrame {
 
         escreverNaTela("\tBem vindo a melhor maquina de bebidas de todos os mundos!\n"
                 + "\n"
-                + "Aperte nas bebidas que você quer comprar! \n\r");
+                + "Aperte nas botões das bebidas que você quer comprar! \n\r");
     }
 
     /**
@@ -443,9 +443,7 @@ public class MachineInterface extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         btnPagar.setBackground(new java.awt.Color(0, 0, 0));
@@ -538,10 +536,10 @@ public class MachineInterface extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnAdicionarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(38, 38, 38)
                                 .addComponent(btnRecomecar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -637,7 +635,7 @@ public class MachineInterface extends javax.swing.JFrame {
         txtTotal.setText(creditoFormat.format(0));
         txtAreaDigitalScreen.setText("\tBem vindo a melhor maquina de bebidas de todos os mundos!\n"
                 + "\n"
-                + "Aperte nas bebidas que você quer comprar! \n\r");
+                + "Aperte nas botões das bebidas que você quer comprar! \n\r");
         btnPagar.setEnabled(true);
 
     }//GEN-LAST:event_btnRecomecarActionPerformed
