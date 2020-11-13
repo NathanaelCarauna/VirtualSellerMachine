@@ -594,35 +594,40 @@ public class MachineInterface extends javax.swing.JFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
 
         telaDefinalizacao = new FinalizationScreen();
-        telaDefinalizacao.setVisible(true);
         double troco = Double.parseDouble(txtTroco.getText().replace("R$ ", "").replace(",", "."));
-        if (troco != 0) {
-            int valorEmCedulas = (int) troco;
-            int[] listaCedulasDisponiveis = {1, 2, 5, 10, 20};
-            int[] cedulasUsadas = new int[valorEmCedulas + 1];
-            int[] contadorDeCedula = new int[valorEmCedulas + 1];
-            int numeroDeCedulasUsadas = Troco.calcularTrocoMoedas(listaCedulasDisponiveis, valorEmCedulas, contadorDeCedula, cedulasUsadas);
+        double total = Double.parseDouble(txtTotal.getText().replace("R$ ", "").replace(",", "."));
+        if(total != 0){
+            JOptionPane.showMessageDialog(null, "Você possui produtos que ainda não foram pagos");
+        }else{
+            telaDefinalizacao.setVisible(true);
+            if (troco != 0) {
+                int valorEmCedulas = (int) troco;
+                int[] listaCedulasDisponiveis = {1, 2, 5, 10, 20};
+                int[] cedulasUsadas = new int[valorEmCedulas + 1];
+                int[] contadorDeCedula = new int[valorEmCedulas + 1];
+                int numeroDeCedulasUsadas = Troco.calcularTrocoMoedas(listaCedulasDisponiveis, valorEmCedulas, contadorDeCedula, cedulasUsadas);
 
-            double valorEmMoedas = (troco - valorEmCedulas) * 100;
-            int valorEmMoedasInteiro = (int) (valorEmMoedas);
-            int[] listaMoedasDisponiveis = {5, 10, 25, 50};
-            int[] moedasUsadas = new int[valorEmMoedasInteiro + 1];
-            int[] contadorDeMoeda = new int[valorEmMoedasInteiro + 1];
+                double valorEmMoedas = (troco - valorEmCedulas) * 100;
+                int valorEmMoedasInteiro = (int) (valorEmMoedas);
+                int[] listaMoedasDisponiveis = {5, 10, 25, 50};
+                int[] moedasUsadas = new int[valorEmMoedasInteiro + 1];
+                int[] contadorDeMoeda = new int[valorEmMoedasInteiro + 1];
 
-            telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) + "\n\r", 2);
-            telaDefinalizacao.escreverNaTela(numeroDeCedulasUsadas + " nota(s) --> ", 2);
-            telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(cedulasUsadas, valorEmCedulas) + "\n\r", 2);
+                telaDefinalizacao.escreverNaTela(creditoFormat.format(troco) + "\n\r", 2);
+                telaDefinalizacao.escreverNaTela(numeroDeCedulasUsadas + " nota(s) --> ", 2);
+                telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(cedulasUsadas, valorEmCedulas) + "\n\r", 2);
 
-            telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaMoedasDisponiveis, valorEmMoedasInteiro, contadorDeMoeda, moedasUsadas) + " moeda(s) --> ", 2);
-            telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valorEmMoedasInteiro) + "\n\r", 2);
+                telaDefinalizacao.escreverNaTela(Troco.calcularTrocoMoedas(listaMoedasDisponiveis, valorEmMoedasInteiro, contadorDeMoeda, moedasUsadas) + " moeda(s) --> ", 2);
+                telaDefinalizacao.escreverNaTela(Troco.imprimirMoedas(moedasUsadas, valorEmMoedasInteiro) + "\n\r", 2);
 
-        } else {
-            telaDefinalizacao.escreverNaTela("Nenhum troco a ser devolvido", 2);
+            } else {
+                telaDefinalizacao.escreverNaTela("Nenhum troco a ser devolvido", 2);
+            }
+            for (int i = 0; i < carrinhoDeCompras.tamanho(); i++) {
+                telaDefinalizacao.escreverNaTela("* " + carrinhoDeCompras.busca(i).getNome() + "\n\r", 1);
+            }
+            this.dispose();
         }
-        for (int i = 0; i < carrinhoDeCompras.tamanho(); i++) {
-            telaDefinalizacao.escreverNaTela("* " + carrinhoDeCompras.busca(i).getNome() + "\n\r", 1);
-        }
-        this.dispose();
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnRecomecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomecarActionPerformed
