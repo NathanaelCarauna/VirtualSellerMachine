@@ -626,9 +626,9 @@ public class MachineInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void btnRecomecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecomecarActionPerformed
-        //limpar lista de produtos
-        carrinhoDeCompras.limpar();
-        //Voltar design dos botões selecionados para o padrão
+        for(int i = 0; i < carrinhoDeCompras.tamanho(); i++){
+            carrinhoDeCompras.remover(i);
+        }
         txtTotal.setText(creditoFormat.format(0));
         txtAreaDigitalScreen.setText("\tBem vindo a melhor maquina de bebidas de todos os mundos!\n"
                 + "\n"
