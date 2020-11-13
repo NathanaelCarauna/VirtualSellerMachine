@@ -31,38 +31,58 @@ public class FinalizationScreen extends javax.swing.JFrame {
         lblTroco = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTroco = new javax.swing.JTextArea();
-        btnNovaCompra = new javax.swing.JButton();
-        btnEncerrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaProdutos = new javax.swing.JTextArea();
         lblProdutos = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnEncerrar = new javax.swing.JButton();
+        btnNovaCompra = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seu troco");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAgradecimento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblAgradecimento.setFont(new java.awt.Font("Unispace", 1, 18)); // NOI18N
+        lblAgradecimento.setForeground(new java.awt.Color(255, 255, 255));
         lblAgradecimento.setText("Muito Obrigado por comprar conosco!");
+        getContentPane().add(lblAgradecimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 53, -1, -1));
 
-        lblTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblTroco.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        lblTroco.setForeground(new java.awt.Color(255, 255, 255));
         lblTroco.setText("Troco");
+        getContentPane().add(lblTroco, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 116, -1, -1));
 
         txtAreaTroco.setEditable(false);
+        txtAreaTroco.setBackground(new java.awt.Color(0, 0, 0));
         txtAreaTroco.setColumns(20);
         txtAreaTroco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAreaTroco.setForeground(new java.awt.Color(255, 255, 255));
         txtAreaTroco.setRows(5);
         jScrollPane1.setViewportView(txtAreaTroco);
 
-        btnNovaCompra.setBackground(new java.awt.Color(153, 255, 153));
-        btnNovaCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnNovaCompra.setText("Nova compra");
-        btnNovaCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaCompraActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 140, 335, 163));
 
-        btnEncerrar.setBackground(new java.awt.Color(255, 204, 204));
-        btnEncerrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtAreaProdutos.setEditable(false);
+        txtAreaProdutos.setBackground(new java.awt.Color(0, 0, 0));
+        txtAreaProdutos.setColumns(20);
+        txtAreaProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAreaProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        txtAreaProdutos.setRows(5);
+        jScrollPane2.setViewportView(txtAreaProdutos);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 140, 335, 163));
+
+        lblProdutos.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        lblProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        lblProdutos.setText("Produtos adquiridos:");
+        getContentPane().add(lblProdutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 116, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(197, 55, 60));
+
+        btnEncerrar.setBackground(new java.awt.Color(0, 0, 0));
+        btnEncerrar.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        btnEncerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEncerrar.setText("Encerrar");
         btnEncerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,67 +90,55 @@ public class FinalizationScreen extends javax.swing.JFrame {
             }
         });
 
-        txtAreaProdutos.setEditable(false);
-        txtAreaProdutos.setColumns(20);
-        txtAreaProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtAreaProdutos.setRows(5);
-        jScrollPane2.setViewportView(txtAreaProdutos);
+        btnNovaCompra.setBackground(new java.awt.Color(0, 0, 0));
+        btnNovaCompra.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        btnNovaCompra.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovaCompra.setText("Nova compra");
+        btnNovaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaCompraActionPerformed(evt);
+            }
+        });
 
-        lblProdutos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblProdutos.setText("Produtos");
+        jLabel1.setFont(new java.awt.Font("Unispace", 2, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nós não nos responsabilizamos por qualquer consequência do uso desses produtos");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblAgradecimento, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblProdutos)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnEncerrar))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnNovaCompra))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTroco)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(45, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(btnEncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnNovaCompra))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(lblAgradecimento)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTroco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProdutos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovaCompra)
-                    .addComponent(btnEncerrar))
-                .addContainerGap(39, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(341, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEncerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNovaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 480));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    insertCredit telaDeCredito;
+    StartScreen telaDeCredito;
     
     public void escreverNaTela(String mensagem, int numeroTela){
         if(numeroTela == 1){
@@ -146,7 +154,7 @@ public class FinalizationScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEncerrarActionPerformed
 
     private void btnNovaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCompraActionPerformed
-        telaDeCredito = new insertCredit();
+        telaDeCredito = new StartScreen();
         telaDeCredito.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnNovaCompraActionPerformed
@@ -204,6 +212,8 @@ public class FinalizationScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEncerrar;
     private javax.swing.JButton btnNovaCompra;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAgradecimento;
